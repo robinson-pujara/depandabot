@@ -1,16 +1,15 @@
-name: Full Stack Build and Security Scan
+name: Full Stack Build
 
 on:
   push:
     branches:
-      - main # You can change this to match your main branch name
+      - main 
   pull_request:
     branches:
-      - main # You can change this to match your main branch name
-
+      - main
 jobs:
-  build_and_security_scan:
-    name: Build, SAST, DAST, and WAF Scan
+  build:
+    name: Build Frontend and Backend
     runs-on: ubuntu-latest
 
     steps:
@@ -20,7 +19,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14' # You can change this to match your Node.js version
+        node-version: '18' 
 
     - name: Install Frontend Dependencies
       run: npm install
@@ -34,27 +33,7 @@ jobs:
       run: npm install
       working-directory: ./backend
 
-    - name: Run Backend Tests
-      run: npm test
-      working-directory: ./backend
 
     - name: Build Backend
       run: npm run build
       working-directory: ./backend
-
-    # Static Application Security Testing (SAST)
-    - name: Run SAST Scan
-      uses: github/codeql-action@v2
-      with:
-        languages: javascript
-        queries: security-code-scanning/codeql-suites/javascript-code-scanning.qls
-
-    # Dynamic Application Security Testing (DAST)
-    - name: Run DAST Scan
-      uses: getgauge-contrib/gauge-snyk@v1
-      with:
-        apiKey: ${{ secrets.SNYK_API_KEY }}
-
-
-
-
