@@ -1,0 +1,20 @@
+# -- stackhawk configuration for vuln_node --
+app:
+  # -- An applicationId obtained from the StackHawk platform. --
+  applicationId: d8d232b5-9a3c-40b6-a086-31fb6fc8d9e3 # (required)
+  # -- The environment for the applicationId defined in the StackHawk platform. --
+  env: Pre-Production # (required)
+  # -- The url of your application to scan --
+  host: http://localhost:3000 # (required)
+
+
+# -- Customized Configuration for GraphQL/SOAP/OpenAPI, add here --
+  # Configuration Docs: https://docs.stackhawk.com/hawkscan/configuration/
+
+# -- If Authenticated Scanning is needed, add here --
+  # Authenticated Scanning Docs: https://docs.stackhawk.com/hawkscan/authenticated-scanning.html
+  # Authenticated Scanning Repo: https://github.com/kaakaww/scan-configuration/tree/main/Authentication
+
+# -- Help Section --
+  # Docs: https://docs.stackhawk.com/
+  # Contact Support: support@stackhawk.com
