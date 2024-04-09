@@ -37,3 +37,11 @@ jobs:
     - name: Build Backend
       run: npm run build
       working-directory: ./backend
+    - name: Run Application
+      run: nohup npm run start &
+      working-directory: ./backend
+    - name : Run HawkScan 
+      uses: stackhawk/hawkscan-action@v2.1.3
+      with:
+        apiKey: ${{ secrets.HAWK_API_KEY }}
+
